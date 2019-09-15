@@ -39,7 +39,7 @@ function init(){
 
 			cell.identifier=identifier;//know 
 
-			cell.addEventListener('click',set);
+			// cell.addEventListener('click',set);
 			row.appendChild(cell);
 			boxes.push(cell);
 			identifier+=identifier;
@@ -65,6 +65,9 @@ function startNewGame(){
 	turn='X';
 	boxes.forEach(function (square){// learn
 		square.innerHTML=EMPTY;
+	})
+		boxes.forEach(function (square){// learn
+		square.addEventListener('click',set);//clicking event is add
 	})
 	document.getElementById('turn').textContent='Player '+turn;
 }
@@ -112,10 +115,15 @@ function set(){
 		// alert('Winner: Player'+turn);
 		// startNewGame();
 		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+		boxes.forEach(function (square){// learn
+		square.removeEventListener('click',set);//clicking event is removed
+	})
+		
 
 	}else if(moves==N_SIZE*N_SIZE){
 		// alert('DRAW GAME');
 		// startNewGame();
+
 		document.getElementById('turn').textContent='the match is DRAW ';
 	}else{
 		turn = turn === 'X' ? 'O' : 'X';
