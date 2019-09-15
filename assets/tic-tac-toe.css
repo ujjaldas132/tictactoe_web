@@ -47,3 +47,9 @@ body {
   width: 100%;
   overflow: hidden;
 }
+
+.restart{
+  max-height: 10px;
+  max-width: 20px;
+  text-align: center;
+}

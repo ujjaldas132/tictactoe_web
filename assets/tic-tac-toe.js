@@ -55,6 +55,7 @@ function init(){
 // new game
 
 function startNewGame(){
+
 	score ={
 		'X':0,'O':0
 
@@ -65,6 +66,7 @@ function startNewGame(){
 	boxes.forEach(function (square){// learn
 		square.innerHTML=EMPTY;
 	})
+	document.getElementById('turn').textContent='Player '+turn;
 }
 
 
@@ -104,8 +106,10 @@ function set(){
 	moves +=1;
 	score[turn]+=this.identifier;
 	if(win(this)){
-		alert('Winner: Player'+turn);
-		startNewGame();
+		// alert('Winner: Player'+turn);
+		// startNewGame();
+		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+
 	}else if(moves==N_SIZE*N_SIZE){
 		alert('DRAW GAME');
 		startNewGame();
