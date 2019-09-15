@@ -29,7 +29,7 @@ function init(){
 			cell.setAttribute('width',120);
 			cell.setAttribute('align','center');
 			cell.setAttribute('valign','center');
-			cell.classList.add('col'+j,'row'+j);// learn
+			cell.classList.add('col'+j,'row'+i);// learn
 			if(i==j){
 				cell.classList.add('diagonal0');
 			}
@@ -75,10 +75,12 @@ function win(clicked){
 
 	// all the cell classes
 	var memberOf= clicked.className.split(/\s+/);
+	console.log(memberOf);
 	for(var i=0;i<memberOf.length;i++){
 		var testClass='.'+memberOf[i];
 		var items= contains('#tictactoe '+testClass,turn);
 		//winning condition
+		// console.log(items);
 		if(items.length==N_SIZE){
 			return true;
 		}
@@ -102,6 +104,7 @@ function set(){
 	if(this.innerHTML !=EMPTY){
 		return;
 	}
+	console.log(this);
 	this.innerHTML=turn;
 	moves +=1;
 	score[turn]+=this.identifier;
@@ -111,8 +114,9 @@ function set(){
 		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
 
 	}else if(moves==N_SIZE*N_SIZE){
-		alert('DRAW GAME');
-		startNewGame();
+		// alert('DRAW GAME');
+		// startNewGame();
+		document.getElementById('turn').textContent='the match is DRAW ';
 	}else{
 		turn = turn === 'X' ? 'O' : 'X';
 		document.getElementById('turn').textContent='Player '+turn;
