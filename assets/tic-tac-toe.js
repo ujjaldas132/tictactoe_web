@@ -7,7 +7,7 @@
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
 
 function boxup(){
-	if(N_SIZE<5){
+	if(N_SIZE<6){
 	N_SIZE++;
 	document.getElementById('board').remove();
 	// location.reload();
@@ -15,9 +15,11 @@ function boxup(){
 }
 function boxdown(){
 	if(N_SIZE>3){
-	N_SIZE--;}
+	N_SIZE--;
 	document.getElementById('board').remove();
-	init();
+	init();}else{
+		alert('the game can not be played below N=3')
+	}
 }
 
 
@@ -39,8 +41,8 @@ function init(){
 
 		for(var j=0;j<N_SIZE;j++){
 			var cell=document.createElement('td');
-			cell.setAttribute('height',120);
-			cell.setAttribute('width',120);
+			cell.setAttribute('height',3*110/(N_SIZE));
+			cell.setAttribute('width',3*120/(N_SIZE));
 			cell.setAttribute('align','center');
 			cell.setAttribute('valign','center');
 			cell.classList.add('col'+j,'row'+i);// learn
