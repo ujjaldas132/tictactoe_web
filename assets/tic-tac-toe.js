@@ -6,13 +6,27 @@
 
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
 
+function boxup(){
+	if(N_SIZE<5){
+	N_SIZE++;
+	document.getElementById('board').remove();
+	// location.reload();
+	init();}
+}
+function boxdown(){
+	if(N_SIZE>3){
+	N_SIZE--;}
+	document.getElementById('board').remove();
+	init();
+}
 
 
 // make the board and start
 
 function init(){
 
-	var board=document.createElement('table');//create table element
+	var board=document.createElement('table');//create table 
+	board.id='board';
 	board.setAttribute('border',1);
 	board.setAttribute('cellspacing',0);
 
