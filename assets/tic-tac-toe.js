@@ -38,13 +38,18 @@ function init(){
 	for(var i=0;i<N_SIZE;i++){
 		var row=document.createElement('tr');
 		board.appendChild(row);
+		// cell.setAttribute('height',N_SIZE*120);
+		// cell.setAttribute('width',N_SIZE*120);
 
 		for(var j=0;j<N_SIZE;j++){
 			var cell=document.createElement('td');
-			cell.setAttribute('height',3*110/(N_SIZE));
+			cell.setAttribute('height',3*120/(N_SIZE));
 			cell.setAttribute('width',3*120/(N_SIZE));
 			cell.setAttribute('align','center');
 			cell.setAttribute('valign','center');
+			// cell.setAttribute('fontSize',(N_SIZE*80/3));
+			// cell.style.fontSize =(N_SIZE*80/3)px;
+			// cell.style.fontSize = "(N_SIZE*160/3)px";
 			cell.classList.add('col'+j,'row'+i);// learn
 			if(i==j){
 				cell.classList.add('diagonal0');

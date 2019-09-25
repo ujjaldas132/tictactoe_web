@@ -11,17 +11,18 @@
 }
 
 .container {
+  padding: 10%;
   display: flex;
   background: #fff;
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 5%;
-  min-height: 5%;
+  min-width: 360px;
+  min-height: 360px;
   /*border-radius: 3%;*/
   margin: auto;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 360px;
+  max-height: 360px;
 }
 
 table {
@@ -32,7 +33,7 @@ table {
 td {
   background-color: #666;
   border: 1px solid white;
-  font-size: 80px;
+  font-size: 35px;
   color: #fff;
   border-radius: 10%;
 }
@@ -45,7 +46,7 @@ body {
   display: flex;
   background: #eee url('https://source.unsplash.com/1600x900/?nature') no-repeat
     center center/cover;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 }
