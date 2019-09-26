@@ -6,6 +6,14 @@
 
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
 
+var cellSize=300;
+
+if(window.screen.width>780){
+var screenWidth = window.screen.width;
+cellSize=.60*(screenWidth/N_SIZE);}
+
+console.log(screenWidth);
+
 function boxup(){
 	if(N_SIZE<6){
 	N_SIZE++;
@@ -43,8 +51,8 @@ function init(){
 
 		for(var j=0;j<N_SIZE;j++){
 			var cell=document.createElement('td');
-			cell.setAttribute('height',3*120/(N_SIZE));
-			cell.setAttribute('width',3*120/(N_SIZE));
+			cell.setAttribute('height',3*cellSize/(N_SIZE));
+			cell.setAttribute('width',3*cellSize/(N_SIZE));
 			cell.setAttribute('align','center');
 			cell.setAttribute('valign','center');
 			// cell.setAttribute('fontSize',(N_SIZE*80/3));

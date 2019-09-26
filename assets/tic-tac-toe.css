@@ -68,6 +68,7 @@ body {
   max-width: 20px;
   text-align: center;
   padding-right:50px; 
+  padding-top: 5%;
 }
 
 .boxdown{
@@ -78,6 +79,7 @@ body {
   float: left;
   padding-bottom: 10px;
   padding-top: 5px;
+  padding-bottom: 5%;
 }
 
 
@@ -89,5 +91,6 @@ body {
   float: right;
   padding-bottom: 10px;
   padding-top: 5px;
-  padding-right: 10%;
+  padding-right: 5%;
+  padding-bottom: 5%;
 }
