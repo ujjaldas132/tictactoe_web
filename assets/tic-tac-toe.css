@@ -13,7 +13,7 @@
 .gameHeader {
   text-align: center;
   padding-top: 2px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   
   padding-left: 9%;
   background-color: lightblue;
@@ -21,7 +21,7 @@
 }
 
 .container {
-  padding: 10%;
+  padding: 2%;
   display: flex;
   background: #fff;
   align-content: center;
@@ -31,8 +31,9 @@
   min-height: 360px;
   /*border-radius: 3%;*/
   margin: auto;
-  max-width: 360px;
-  max-height: 360px;
+  max-width: 100%;
+  max-height: 100%;
+
 }
 
 table {
@@ -68,18 +69,25 @@ body {
   text-align: center;
   padding-right:50px; 
 }
-.boxup{
-  /*padding-top: 40px;*/
-  max-height: 10px;
-  max-width: 20px;
-  /*text-align: center;*/
-  float: left;
-}
+
 .boxdown{
   /*padding-top: 40px;*/
   max-height: 10px;
   max-width: 20px;
   /*text-align: center;*/
+  float: left;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+
+.boxup{
+  /*padding-top: 40px;*/
+  max-height: 10px;
+  max-width: 20px;
+  /*text-align: center;*/
   float: right;
-  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-right: 10%;
 }
