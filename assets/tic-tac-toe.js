@@ -11,7 +11,7 @@ var winningMoves=N_SIZE;
 
 if(window.screen.width>780){
 var screenWidth = window.screen.width;
-cellSize=.48*(screenWidth/N_SIZE);}
+cellSize=.24*(screenWidth/N_SIZE);}
 
 console.log(screenWidth);
 
