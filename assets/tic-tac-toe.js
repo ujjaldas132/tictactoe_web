@@ -6,17 +6,19 @@
 
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
 
-var cellSize=300;
+var cellSize=285;
+var winningMoves=N_SIZE;
 
 if(window.screen.width>780){
 var screenWidth = window.screen.width;
-cellSize=.60*(screenWidth/N_SIZE);}
+cellSize=.48*(screenWidth/N_SIZE);}
 
 console.log(screenWidth);
 
 function boxup(){
-	if(N_SIZE<6){
+	if(N_SIZE<5){
 	N_SIZE++;
+	winningMoves=N_SIZE;
 	document.getElementById('board').remove();
 	// location.reload();
 	init();}
@@ -24,6 +26,7 @@ function boxup(){
 function boxdown(){
 	if(N_SIZE>3){
 	N_SIZE--;
+	winningMoves=N_SIZE;
 	document.getElementById('board').remove();
 	init();}else{
 		alert('the game can not be played below N=3')
@@ -84,6 +87,9 @@ function init(){
 // new game
 
 function startNewGame(){
+	if(N_SIZE>5){
+		winningMoves=5;
+	}
 
 	score ={
 		'X':0,'O':0
@@ -113,7 +119,7 @@ function win(clicked){
 		var items= contains('#tictactoe '+testClass,turn);
 		//winning condition
 		// console.log(items);
-		if(items.length==N_SIZE){
+		if(items.length==winningMoves){
 			return true;
 		}
 	}
