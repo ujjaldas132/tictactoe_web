@@ -46,8 +46,8 @@ function init(){
 	array=new Array(N_SIZE);
 	for(var i=0;i<N_SIZE;i++){
 		var tmat= new Array(N_SIZE);
-		for(var k ;k<N_SIZE;k++)
-			tmat[k]=-1;
+		// for(var k ;k<N_SIZE;k++)
+		// 	tmat[k]=-1;
 		array[i]=tmat;
 	}
 	for(var i=0;i<N_SIZE;i++){
@@ -110,7 +110,14 @@ function init(){
 
 function startNewGame(){
 	gameEnd=false;
+
+	for(var i=0;i<N_SIZE;i++){
+		for(var j=0;j<N_SIZE;j++){
+			array[i][j]=-1;
+		}
+	}
 	
+
 	if(N_SIZE>5){
 		winningMoves=5;
 	}
