@@ -5,6 +5,7 @@
 
 
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
+var gameEnd=false;
 var array;
 var rowMap={};
 var colMap={};
@@ -108,6 +109,8 @@ function init(){
 // new game
 
 function startNewGame(){
+	gameEnd=false;
+	
 	if(N_SIZE>5){
 		winningMoves=5;
 	}
@@ -170,6 +173,7 @@ function set(){
 	if(checkWin(turn,row,col)){
 		// alert('Winner: Player'+turn);
 		// startNewGame();
+		gameEnd=true;
 		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
 		boxes.forEach(function (square){// learn
 		square.removeEventListener('click',set);//clicking event is removed
@@ -191,6 +195,7 @@ function set(){
 
 
 function checkWin(turn,row,col){
+
 	var num=1;
 	if(turn=='X')
 		num=0;
@@ -280,19 +285,42 @@ return count>=winningMoves;
 
 
 function computerturn(){
+	if(gameEnd)
+		return;
+	var check=true;
 	var row=parseInt((Math.random()*1000)%N_SIZE);
 	var col=parseInt((Math.random()*1000)%N_SIZE);
+
+	for(var i=0;i<N_SIZE;i++){
+		for(var j=0;j<N_SIZE;j++){
+			if(array[i][j]==-1){
+
+				if(checkWin('X',i,j)){
+
+					check=false;
+					row=i;
+					col=j;
+					break;
+				}
+
+			}
+		}
+		if(!check)
+			break;
+	}
+
+	if(check){
 	while(array[row][col]!=-1){
 		row=parseInt((Math.random()*1000)%N_SIZE);
 		col=parseInt((Math.random()*1000)%N_SIZE);
-	}
+	}}
 	array[row][col]=1;
 	boxes.forEach(function (square){// learn
 
 		var rowS= parseInt(square.classList[1].substring(3,4));
 		var colS= parseInt(square.classList[0].substring(3,4));
 		if(row==rowS && col==colS){
-			
+
 			square.innerHTML='O';
 			moves+=1;
 		}
@@ -303,7 +331,8 @@ function computerturn(){
 	if(checkWin('O',row,col)){
 		// alert('Winner: Player'+turn);
 		// startNewGame();
-		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+		gameEnd=true;
+		document.getElementById('turn').textContent='Player Computer  '+' is the WINNER';
 		boxes.forEach(function (square){// learn
 		square.removeEventListener('click',set);//clicking event is removed
 	})
