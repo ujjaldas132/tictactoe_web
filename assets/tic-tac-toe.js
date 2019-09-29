@@ -40,6 +40,7 @@ function boxdown(){
 // make the board and start
 
 function init(){
+	boxes=[];
 
 	array=new Array(N_SIZE);
 	for(var i=0;i<N_SIZE;i++){
@@ -47,6 +48,11 @@ function init(){
 		for(var k ;k<N_SIZE;k++)
 			tmat[k]=-1;
 		array[i]=tmat;
+	}
+	for(var i=0;i<N_SIZE;i++){
+		for(var j=0;j<N_SIZE;j++){
+			array[i][j]=-1;
+		}
 	}
 	console.log(array);
 
@@ -123,23 +129,7 @@ function startNewGame(){
 }
 
 
-//win or lose
-function win(clicked){
 
-	// all the cell classes
-	var memberOf= clicked.className.split(/\s+/);
-	console.log(memberOf);
-	for(var i=0;i<memberOf.length;i++){
-		var testClass='.'+memberOf[i];
-		var items= contains('#tictactoe '+testClass,turn);
-		//winning condition
-		// console.log(items);
-		if(items.length==winningMoves){
-			return true;
-		}
-	}
-	return false;
-}
 
 
 // clicked node list
@@ -192,9 +182,11 @@ function set(){
 
 		document.getElementById('turn').textContent='the match is DRAW ';
 	}else{
-		turn = turn === 'X' ? 'O' : 'X';
-		document.getElementById('turn').textContent='Player '+turn;
+		var turnchange=0;
+		// turn = turn === 'X' ? 'O' : 'X';
+		// document.getElementById('turn').textContent='Player '+turn;
 	}
+	computerturn();
 }
 
 
@@ -288,6 +280,36 @@ return count>=winningMoves;
 
 
 function computerturn(){
+	var row=parseInt((Math.random()*1000)%N_SIZE);
+	var col=parseInt((Math.random()*1000)%N_SIZE);
+	while(array[row][col]!=-1){
+		row=parseInt((Math.random()*1000)%N_SIZE);
+		col=parseInt((Math.random()*1000)%N_SIZE);
+	}
+	array[row][col]=1;
+	boxes.forEach(function (square){// learn
+
+		var rowS= parseInt(square.classList[1].substring(3,4));
+		var colS= parseInt(square.classList[0].substring(3,4));
+		if(row==rowS && col==colS){
+			
+			square.innerHTML='O';
+			moves+=1;
+		}
+		// square.innerHTML=EMPTY;
+	})
+
+
+	if(checkWin('O',row,col)){
+		// alert('Winner: Player'+turn);
+		// startNewGame();
+		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+		boxes.forEach(function (square){// learn
+		square.removeEventListener('click',set);//clicking event is removed
+	})
+		
+
+	}
 
 }
 
@@ -295,3 +317,92 @@ function computerturn(){
 
 
 init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//win or lose
+function win(clicked){
+
+	// all the cell classes
+	var memberOf= clicked.className.split(/\s+/);
+	console.log(memberOf);
+	for(var i=0;i<memberOf.length;i++){
+		var testClass='.'+memberOf[i];
+		var items= contains('#tictactoe '+testClass,turn);
+		//winning condition
+		// console.log(items);
+		if(items.length==winningMoves){
+			return true;
+		}
+	}
+	return false;
+}
