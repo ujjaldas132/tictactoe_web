@@ -5,13 +5,16 @@
 
 
 var N_SIZE=3,EMPTY='&nbsp;',boxes=[],turn='X',score,moves;
+var array;
+var rowMap={};
+var colMap={};
 
 var cellSize=285;
 var winningMoves=N_SIZE;
 
 if(window.screen.width>780){
 var screenWidth = window.screen.width;
-cellSize=.24*(screenWidth/N_SIZE);}
+cellSize=.20*(screenWidth/N_SIZE);}
 
 console.log(screenWidth);
 
@@ -38,6 +41,15 @@ function boxdown(){
 
 function init(){
 
+	array=new Array(N_SIZE);
+	for(var i=0;i<N_SIZE;i++){
+		var tmat= new Array(N_SIZE);
+		for(var k ;k<N_SIZE;k++)
+			tmat[k]=-1;
+		array[i]=tmat;
+	}
+	console.log(array);
+
 	var board=document.createElement('table');//create table 
 	board.id='board';
 	board.setAttribute('border',1);
@@ -54,6 +66,7 @@ function init(){
 
 		for(var j=0;j<N_SIZE;j++){
 			var cell=document.createElement('td');
+			
 			cell.setAttribute('height',3*cellSize/(N_SIZE));
 			cell.setAttribute('width',3*cellSize/(N_SIZE));
 			cell.setAttribute('align','center');
@@ -75,6 +88,8 @@ function init(){
 			row.appendChild(cell);
 			boxes.push(cell);
 			identifier+=identifier;
+			rowMap[cell]=i;
+			colMap[cell]=j;
 		}
 
 	}
@@ -142,7 +157,22 @@ function set(){
 	if(this.innerHTML !=EMPTY){
 		return;
 	}
-	console.log(this);
+
+	var row= parseInt(this.classList[1].substring(3,4));
+	var col= parseInt(this.classList[0].substring(3,4));
+	// var row=rowMap[this];
+	// var col=colMap[this];
+	console.log(row);
+	console.log(col);
+	// var row=parseInt(rowStr.substr(3,4));
+	// var col=parseInt(colStr.substr(3,4));
+	if(turn=='X'){
+		array[row][col]=0;
+	}else{
+		array[row][col]=1;
+	}
+
+	console.log(checkWin(turn,row,col));
 	this.innerHTML=turn;
 	moves +=1;
 	score[turn]+=this.identifier;
@@ -165,6 +195,75 @@ function set(){
 		document.getElementById('turn').textContent='Player '+turn;
 	}
 }
+
+
+function checkWin(turn,row,col){
+	var num=1;
+	if(turn=='X')
+		num=0;
+
+	var count=1;
+	for(var i=col+1;i<N_SIZE;i++){
+		if(array[row][i]==num){
+			count++;
+		}else{
+			break;
+		}
+
+	}
+	for(var i=col-1;i>=0;i--){
+		if(array[row][i]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+
+	if(count>=winningMoves){
+		return true;
+	}
+
+
+count=1;
+for(var i=row+1;i<N_SIZE;i++){
+		if(array[i][col]==num){
+			count++;
+		}else{
+			break;
+		}
+
+	}
+	for(var i=row-1;i>=0;i--){
+		if(array[i][col]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+	if(count>=winningMoves){
+		return true;
+	}
+
+	
+	count=1;
+	for(var i=1;row-i>=0 && col-i>=0 ;i++){
+		if(array[row-i][col-i]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+	for(var i=1;row+i<N_SIZE && col+i<N_SIZE ;i++){
+		if(array[row+i][col+i]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+return count>=winningMoves;
+
+}
+
 
 
 
