@@ -116,7 +116,7 @@ function startNewGame(){
 			array[i][j]=-1;
 		}
 	}
-	
+
 
 	if(N_SIZE>5){
 		winningMoves=5;
@@ -292,7 +292,7 @@ return count>=winningMoves;
 
 
 function computerturn(){
-	if(gameEnd)
+	if(gameEnd || moves>=N_SIZE*N_SIZE)
 		return;
 	var check=true;
 	var row=parseInt((Math.random()*1000)%N_SIZE);
