@@ -14,12 +14,12 @@ var winningMoves=N_SIZE;
 
 if(window.screen.width>780){
 var screenWidth = window.screen.width;
-cellSize=.20*(screenWidth/N_SIZE);}
+cellSize=0.25*(screenWidth/N_SIZE);}
 
 console.log(screenWidth);
 
 function boxup(){
-	if(N_SIZE<5){
+	if(N_SIZE<21){
 	N_SIZE++;
 	winningMoves=N_SIZE;
 	document.getElementById('board').remove();
@@ -176,7 +176,8 @@ function set(){
 	this.innerHTML=turn;
 	moves +=1;
 	score[turn]+=this.identifier;
-	if(win(this)){
+	// if(win(this)){
+	if(checkWin(turn,row,col)){
 		// alert('Winner: Player'+turn);
 		// startNewGame();
 		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';

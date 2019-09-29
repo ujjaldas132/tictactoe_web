@@ -20,6 +20,7 @@
   float: right;
 }
 
+
 .container {
   padding: 2%;
   display: flex;
@@ -100,4 +101,13 @@ body {
   padding-top: 15px;
   /*padding-right: 5%;*/
   padding-bottom: 2%;
+}
+
+
+@media only screen and (min-width: 600px){
+  .gameHeader{
+    padding-top: 0px;
+  }
+  .container {
+  padding: 0%;}
 }
