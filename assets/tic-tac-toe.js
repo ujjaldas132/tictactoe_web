@@ -19,7 +19,7 @@ cellSize=0.25*(screenWidth/N_SIZE);}
 console.log(screenWidth);
 
 function boxup(){
-	if(N_SIZE<21){
+	if(N_SIZE<8){
 	N_SIZE++;
 	winningMoves=N_SIZE;
 	document.getElementById('board').remove();
@@ -245,6 +245,27 @@ for(var i=row+1;i<N_SIZE;i++){
 		return true;
 	}
 
+
+count=1;
+	for(var i=1;row-i>=0 && col+i<N_SIZE ;i++){
+		if(array[row-i][col+i]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+	for(var i=1;row+i<N_SIZE && col-i>=0 ;i++){
+		if(array[row+i][col-i]==num){
+			count++;
+		}else{
+			break;
+		}
+	}
+
+if(count>=winningMoves){
+		return true;
+	}
+
 	
 	count=1;
 	for(var i=1;row-i>=0 && col-i>=0 ;i++){
@@ -265,6 +286,10 @@ return count>=winningMoves;
 
 }
 
+
+function computerturn(){
+
+}
 
 
 
