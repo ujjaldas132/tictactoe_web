@@ -297,7 +297,27 @@ function computerturn(){
 	var check=true;
 	var row=parseInt((Math.random()*1000)%N_SIZE);
 	var col=parseInt((Math.random()*1000)%N_SIZE);
+	for(var i=0;i<N_SIZE;i++){
+		for(var j=0;j<N_SIZE;j++){
+			if(array[i][j]==-1){
 
+				if(checkWin('O',i,j)){
+
+					check=false;
+					row=i;
+					col=j;
+					break;
+				}
+
+			}
+		}
+		if(!check)
+			break;
+	}
+
+
+
+	if(check){
 	for(var i=0;i<N_SIZE;i++){
 		for(var j=0;j<N_SIZE;j++){
 			if(array[i][j]==-1){
@@ -315,6 +335,9 @@ function computerturn(){
 		if(!check)
 			break;
 	}
+}
+
+
 
 	if(check){
 	while(array[row][col]!=-1){
