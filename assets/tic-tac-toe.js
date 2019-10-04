@@ -135,7 +135,8 @@ function startNewGame(){
 		boxes.forEach(function (square){// learn
 		square.addEventListener('click',set);//clicking event is add
 	})
-	document.getElementById('turn').textContent='Player '+turn;
+	// document.getElementById('turn').textContent='Player '+turn;
+	document.getElementById('turn').textContent='Your turn';
 }
 
 
@@ -181,7 +182,8 @@ function set(){
 		// alert('Winner: Player'+turn);
 		// startNewGame();
 		gameEnd=true;
-		document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+		// document.getElementById('turn').textContent='Player '+turn+' is the WINNER';
+		document.getElementById('turn').textContent='You are the WINNER';
 		boxes.forEach(function (square){// learn
 		square.removeEventListener('click',set);//clicking event is removed
 	})
