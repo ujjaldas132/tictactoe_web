@@ -7,7 +7,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
 
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com?style=for-the-badge) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?style=for-the-badge)](https://opensource.org/licenses/mit-license.php?style=for-the-badge) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com?style=for-the-badge) 
 
 ![GitHub language count](https://img.shields.io/github/languages/count/ujjaldas132/tictactoe_web?style=for-the-badge)
 
@@ -33,3 +33,4 @@ K=5 for N>5<br/>
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?style=for-the-badge)](https://opensource.org/licenses/mit-license.php) 
